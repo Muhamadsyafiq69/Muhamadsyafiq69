@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>VirLab Transfusi Darah</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 30px;
+      background: url('Background Bagus.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .header-logos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-bottom: 2px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      height: 50px;
+      object-fit: contain;
+    }
+    .judul-lab {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      color: #2c3e50;
+    }
+    .judul-lab span {
+      font-size: 12px;
+      color: #34495e;
+    }
+    .container, .lkpd-container, .identitas-container, .evaluasi-container, .materi-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+      display: none;
+    }
+    .landing-page {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: rgba(255,255,255,0.85);
+      margin: 20px;
+      border-radius: 12px;
+    }
+    .start-button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .nav-buttons {
+      display: none;
+      text-align: center;
+      background-color: rgba(255,255,255,0.9);
+      padding: 10px;
+      flex-wrap: wrap;
+    }
+    .nav-buttons button {
+      margin: 5px;
+      padding: 10px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+    .container, .materi-container, .lkpd-container, .evaluasi-container, .identitas-container {
+      display: none;
+      background: rgba(255, 255, 255, 0.95);
+      margin: 10px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 12px;
+    }
+    .active {
+      display: block !important;
+    }
+    .tabung {
+      width: 60px;
+      height: 150px;
+      border: 3px solid #888;
+      border-radius: 20px 20px 5px 5px;
+      background-color: white;
+      position: relative;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+    .cairan {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      border-radius: 0 0 5px 5px;
+      animation: isiCairan 1s forwards;
+    }
+    .cairan-cocok { background-color: #e74c3c; }
+    .cairan-tidak-cocok {
+      background-image: radial-gradient(#8b0000 20%, transparent 20%);
+      background-size: 20px 20px;
+      background-color: #f5b7b1;
+    }
+    @keyframes isiCairan { to { height: 60%; } }
+  </style>
+</head>
+<body>
+
+<div class="header-logos">
+  <img src="logo-uinssc.png" alt="Logo Kiri" class="logo" />
+  <div class="judul-lab">
+    Virtual Lab Transfusi Darah<br />
+    <span>Tadris Biologi – UIN SIBER Syekh Nurjati</span>
+  </div>
+  <img src="logo-tadris.jpeg" alt="Logo Kanan" class="logo" />
+</div>
+
+ <div id="landingPage" class="landing-page active">
+    <h1>Selamat Datang di Virtual Lab Transfusi Darah</h1>
+    <p>Simulasi interaktif untuk memahami golongan darah dan proses transfusi dengan cara yang seru dan mudah!</p>
+    <button class="start-button" onclick="mulaiVirLab()">🚀 Mulai</button>
+  </div>
+
+  <div class="nav-buttons" style="display:none;" id="mainNav">
+    <button onclick="showSection('materi')">📘 Materi</button>
+    <button onclick="showSection('saran-rekomendasi')">💡 Saran & Rekomendasi</button>
+    <button onclick="showSection('simulasi')">🔬 Simulasi</button>
+    <button onclick="showSection('lkpd')">📄 LKPD Virlab</button>
+    <button onclick="showSection('evaluasi')">🧪 Evaluasi</button>
+    <button onclick="showSection('identitas')">👤 Identitas</button>
+  </div>
+
+<div id="materi" class="materi-container">
+    <h2>Materi: Penggolongan Darah</h2>
+    <h3>1. Apa itu Penggolongan Darah?</h3>
+    <p>Penggolongan darah adalah cara untuk mengelompokkan darah berdasarkan antigen dan antibodi dalam darah. Ini sangat penting untuk transfusi darah karena jika tidak cocok bisa berbahaya.</p>
+    <h3>2. Sistem ABO</h3>
+    <p>Sistem ABO mengelompokkan darah menjadi:</p>
+    <ul>
+      <li>A: Antigen A, antibodi anti-B</li>
+      <li>B: Antigen B, antibodi anti-A</li>
+      <li>AB: Antigen A dan B, tanpa antibodi</li>
+      <li>O: Tanpa antigen, antibodi anti-A dan anti-B</li>
+    </ul>
+    <h3>3. Sistem Rhesus</h3>
+    <p>Jika memiliki antigen D disebut Rh+, jika tidak disebut Rh-.</p>
+    <h3>4. Aturan Transfusi</h3>
+    <ul>
+      <li>O- bisa ke semua orang (donor universal)</li>
+      <li>AB+ bisa menerima dari siapa saja (resipien universal)</li>
+    </ul>
+    <h3>5. Risiko Ketidaksesuaian</h3>
+    <p>Jika transfusi tidak cocok, bisa menyebabkan aglutinasi, hemolisis, syok, bahkan kematian.</p>
+    <h3>6. Fakta Penting</h3>
+    <ul>
+      <li>Golongan darah diturunkan dari orang tua</li>
+      <li>Perlu uji kecocokan silang sebelum transfusi</li>
+    </ul>
+  </div>
+  <div id="saran-rekomendasi" class="materi-container">
+    <h2>Saran dan Rekomendasi</h2>
+    <ul>
+      <li>Kenali golongan darahmu sejak dini untuk keperluan medis.</li>
+      <li>Ikut serta dalam kegiatan donor darah rutin.</li>
+      <li>Pahami prinsip transfusi darah yang aman.</li>
+      <li>Gunakan simulasi ini untuk latihan dan pemahaman.</li>
+    </ul>
+    <p>Jadilah generasi peduli ilmu dan kemanusiaan!</p>
+  </div>
+
+  <div id="identitas" class="identitas-container">
+    <h2>Identitas Pengembang</h2>
+    <p><strong>Nama:</strong> Muhamad Syafiq Mubarok</p>
+    <p><strong>NIM:</strong> 2281060064</p>
+    <p><strong>Prodi:</strong> Tadris Biologi B6</p>
+    <p><strong>Instansi:</strong> UIN Siber Syekh Nurjati Cirebon</p>
+  </div>
+
+<div id="simulasi" class="container">
+  <h2>Simulasi Transfusi Darah</h2>
+  <p>Golongan darah Anda:
+    <select id="golongan">
+      <option value="A">A</option><option value="B">B</option>
+      <option value="AB">AB</option><option value="O">O</option>
+    </select>
+  </p>
+  <p>Rhesus:
+    <select id="rhesus">
+      <option value="+">+</option><option value="-">-</option>
+    </select>
+  </p>
+  <p>Donor:
+    <select id="donor">
+      <option value="A+">A+</option><option value="O-">O-</option>
+      <option value="B+">B+</option><option value="AB+">AB+</option>
+    </select>
+  </p>
+  <button onclick="cekKecocokan()">Cek Kecocokan</button>
+  <div class="tabung"><div id="cairan" class="cairan"></div></div>
+  <div id="hasil"></div>
+</div>
+
+<div id="lkpd" class="lkpd-container">
+  <h2>LKPD Interaktif: Discovery Learning</h2>
+  <ol>
+    <li><strong>Stimulation:</strong> Apa yang kamu ketahui tentang transfusi darah? Tulis di bawah ini:<br><textarea rows="3" cols="60"></textarea></li>
+    <li><strong>Problem Statement:</strong> Mengapa transfusi darah tidak bisa dilakukan sembarangan? Diskusikan!</li>
+    <li><strong>Data Collection:</strong> Gunakan simulasi untuk mengamati hasil transfusi dan catat hasilnya!</li>
+    <li><strong>Data Processing:</strong> Bandingkan hasil transfusi yang cocok dan tidak cocok. Apa perbedaannya?</li>
+    <li><strong>Verification:</strong> Apakah data yang kamu peroleh sesuai dengan teori? Jelaskan.</li>
+    <li><strong>Generalization:</strong> Buat kesimpulan tentang aturan transfusi darah berdasarkan hasil observasi.</li>
+    <li><strong>Refleksi:</strong> Apa manfaat dari memahami sistem penggolongan darah dalam kehidupan sehari-hari?</li>
+    <li><strong>Aksi:</strong> Jika kamu menjadi bagian dari tim medis, apa langkah awal yang harus dilakukan sebelum transfusi darah?</li>
+  </ol>
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="https://forms.gle/fvxtXh4WoTtaEwrp7" target="_blank">
+      <button style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        📤 Kumpulkan LKPD via Google Form
+      </button>
+    </a>
+  </div>
+</div>
+
+<div id="evaluasi" class="evaluasi-container">
+  <h2>Evaluasi Penggolongan Darah</h2>
+  <form id="formEvaluasi">
+    <div class="question">
+      1. Golongan darah universal donor adalah?<br>
+      <input type="radio" name="soal1" value="A">A
+      <input type="radio" name="soal1" value="B">B
+      <input type="radio" name="soal1" value="AB">AB
+      <input type="radio" name="soal1" value="O">O
+    </div>
+    <div class="question">
+      2. Golongan darah yang bisa menerima dari semua golongan adalah?<br>
+      <input type="radio" name="soal2" value="O">O
+      <input type="radio" name="soal2" value="A">A
+      <input type="radio" name="soal2" value="AB">AB
+      <input type="radio" name="soal2" value="B">B
+    </div>
+    <div class="question">
+      3. Fungsi utama antigen dalam sel darah merah adalah:<br>
+      <input type="radio" name="soal3" value="Melindungi darah dari infeksi">Melindungi darah dari infeksi
+      <input type="radio" name="soal3" value="Menentukan golongan darah">Menentukan golongan darah
+      <input type="radio" name="soal3" value="Mengangkut oksigen">Mengangkut oksigen
+      <input type="radio" name="soal3" value="Mengikat antibodi">Mengikat antibodi
+    </div>
+    <div class="question">
+      4. Jika seseorang dengan golongan darah B menerima darah dari A, maka yang terjadi adalah:<br>
+      <input type="radio" name="soal4" value="Transfusi berhasil">Transfusi berhasil
+      <input type="radio" name="soal4" value="Tidak ada efek">Tidak ada efek
+      <input type="radio" name="soal4" value="Aglutinasi">Aglutinasi
+      <input type="radio" name="soal4" value="Keseimbangan">Keseimbangan
+    </div>
+    <div class="question">
+      5. Apa perbedaan utama antara darah Rh+ dan Rh-?<br>
+      <input type="radio" name="soal5" value="Jumlah oksigen">Jumlah oksigen
+      <input type="radio" name="soal5" value="Kandungan hemoglobin">Kandungan hemoglobin
+      <input type="radio" name="soal5" value="Kehadiran antigen D">Kehadiran antigen D
+      <input type="radio" name="soal5" value="Jumlah eritrosit">Jumlah eritrosit
+    </div>
+    <button type="button" onclick="periksaJawaban()">Periksa Jawaban</button>
+  </form>
+  <div id="feedback"></div>
+</div>
+
+<audio id="suaraCocok" src="suara-cocok.mp3" preload="auto"></audio>
+<audio id="suaraTidakCocok" src="suara-tidak-cocok.mp3" preload="auto"></audio>
+
+<script>
+function mulaiVirLab() {
+      document.getElementById("landingPage").classList.remove("active");
+      document.getElementById("materi").classList.add("active");
+      document.getElementById("mainNav").style.display = "block";
+    }
+    function showSection(id) {
+      document.querySelectorAll('.container, .lkpd-container, .identitas-container, .evaluasi-container, .materi-container')
+        .forEach(e => e.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+function cekKecocokan() {
+  const data = {
+    "A+": ["A+", "A-", "O+", "O-"],
+    "O-": ["O-"], "B+": ["B+", "B-", "O+", "O-"],
+    "AB+": ["A+", "B+", "AB+", "O+", "A-", "B-", "AB-", "O-"]
+  };
+  const gol = document.getElementById("golongan").value;
+  const rh = document.getElementById("rhesus").value;
+  const donor = document.getElementById("donor").value;
+  const penerima = gol + rh;
+  const hasil = document.getElementById("hasil");
+  const cairan = document.getElementById("cairan");
+  const cocok = data[penerima]?.includes(donor);
+  cairan.className = "cairan";
+  void cairan.offsetHeight;
+  if (cocok) {
+    cairan.classList.add("cairan-cocok");
+    hasil.innerHTML = "<b style='color:green'>✅ Cocok</b>";
+    suaraCocok.play();
+  } else {
+    cairan.classList.add("cairan-tidak-cocok");
+    hasil.innerHTML = "<b style='color:red'>❌ Tidak Cocok</b>";
+    suaraTidakCocok.play();
+  }
+}
+function periksaJawaban() {
+  const feedback = document.getElementById("feedback");
+  let benar = 0;
+
+  const kunci = {
+    soal1: "O",
+    soal2: "AB",
+    soal3: "Menentukan golongan darah",
+    soal4: "Aglutinasi",
+    soal5: "Kehadiran antigen D"
+  };
+
+  for (let i = 1; i <= 5; i++) {
+    const jawaban = document.querySelector(`input[name="soal${i}"]:checked`);
+    if (!jawaban) {
+      feedback.innerHTML = `<p style='color:red'><strong>Silakan jawab semua soal terlebih dahulu.</strong></p>`;
+      return;
+    }
+    if (jawaban.value === kunci[`soal${i}`]) benar++;
+  }
+
+  feedback.innerHTML = `<p><strong>Skor Anda: ${benar}/5</strong></p>`;
+}
+</script>
+</body>
+</html>
